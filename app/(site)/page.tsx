@@ -8,7 +8,7 @@ const AVATARS = ["bg-navy", "bg-[#7E6BB5]", "bg-accent"];
 export default function HomePage() {
   return (
     <main>
-      <section className="bg-gradient-to-b from-sky via-white to-white">
+      <section className="overflow-hidden bg-gradient-to-b from-sky via-white to-white">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 sm:px-6 lg:grid-cols-2 lg:py-16">
           <Reveal>
             <p className="inline-flex rounded-full bg-white px-3 py-1 text-sm font-semibold text-navy ring-1 ring-line">
@@ -45,48 +45,88 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal delayMs={80}>
-            <div className="rounded-[28px] bg-white p-5 shadow-[0_18px_50px_rgba(52,49,95,0.08)] ring-1 ring-line sm:p-6">
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-sm font-bold text-deep-navy">Subjects we cover</p>
-                <span className="rounded-full bg-accent-soft px-2.5 py-1 text-xs font-bold text-accent">1 to 1</span>
-              </div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {SUBJECTS.map((subject) => (
-                  <span key={subject} className="rounded-full bg-sky px-3 py-1.5 text-sm font-semibold text-navy">
-                    {subject}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-5 grid grid-cols-3 gap-2">
-                {LEVELS.map((level) => (
-                  <span
-                    key={level}
-                    className="rounded-xl bg-mist px-2 py-2.5 text-center text-xs font-bold text-deep-navy sm:text-sm"
+            <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+              <div aria-hidden="true" className="absolute -right-4 -top-6 h-40 w-40 rounded-full bg-accent-soft blur-2xl sm:h-56 sm:w-56" />
+              <div aria-hidden="true" className="absolute -bottom-8 -left-4 h-40 w-40 rounded-full bg-[#DAD7F2] blur-2xl sm:h-56 sm:w-56" />
+
+              <div className="relative overflow-hidden rounded-[28px] bg-white shadow-[0_24px_60px_rgba(52,49,95,0.14)] ring-1 ring-line">
+                <div className="relative bg-gradient-to-br from-navy to-deep-navy px-5 pb-6 pt-5 text-white sm:px-7 sm:pb-7 sm:pt-6">
+                  <div aria-hidden="true" className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-white/10" />
+                  <div aria-hidden="true" className="absolute -bottom-12 right-16 h-28 w-28 rounded-full bg-accent/30" />
+                  <div className="relative flex items-center justify-between gap-3">
+                    <p className="text-sm font-bold">Subjects we cover</p>
+                    <span className="rounded-full bg-white px-3 py-1 text-xs font-extrabold text-accent">1 to 1</span>
+                  </div>
+                  <div className="relative mt-4 flex flex-wrap gap-2">
+                    {SUBJECTS.map((subject) => (
+                      <span
+                        key={subject}
+                        className="rounded-full bg-white/15 px-3.5 py-1.5 text-sm font-semibold text-white ring-1 ring-white/25"
+                      >
+                        {subject}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-5 sm:p-7">
+                  <div className="grid grid-cols-2 gap-2.5 min-[420px]:grid-cols-3">
+                    {LEVELS.map((level) => (
+                      <span
+                        key={level}
+                        className="flex items-center justify-center gap-2 rounded-xl bg-mist px-2 py-3 text-center text-sm font-bold text-deep-navy ring-1 ring-line"
+                      >
+                        <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                        {level}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 grid gap-3 min-[420px]:grid-cols-2">
+                    <div className="flex items-center gap-3 rounded-2xl bg-sky px-4 py-3">
+                      <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white text-navy">
+                        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z" />
+                          <circle cx="12" cy="10" r="2.5" />
+                        </svg>
+                      </span>
+                      <span>
+                        <span className="block text-xs font-semibold text-ink/55">Where</span>
+                        <span className="block text-sm font-bold text-deep-navy">Online or home</span>
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 rounded-2xl bg-accent-soft px-4 py-3">
+                      <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white text-accent">
+                        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="9" cy="8" r="3" />
+                          <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+                          <path d="M16 11a3 3 0 100-6M18 14.5c1.8.7 3 2.4 3 4.5" />
+                        </svg>
+                      </span>
+                      <span>
+                        <span className="block text-xs font-semibold text-ink/55">Groups</span>
+                        <span className="block text-sm font-bold text-deep-navy">Max 5</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/book"
+                    className="group mt-4 flex items-center justify-between gap-4 rounded-2xl bg-accent px-5 py-4 text-white transition hover:bg-[#8E3D6A]"
                   >
-                    {level}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-5 grid grid-cols-2 gap-3">
-                <div className="rounded-2xl bg-mist px-4 py-3">
-                  <p className="text-xs font-semibold text-ink/50">Where</p>
-                  <p className="mt-1 text-sm font-bold text-deep-navy">Online or home</p>
+                    <span>
+                      <span className="block text-xs font-semibold text-white/75">Next step</span>
+                      <span className="mt-0.5 block text-sm font-bold leading-snug">Tell us the year group. We match the tutor.</span>
+                    </span>
+                    <span className="flex flex-shrink-0 items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-sm font-bold text-accent">
+                      Book
+                      <svg viewBox="0 0 24 24" className="h-4 w-4 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
+                    </span>
+                  </Link>
                 </div>
-                <div className="rounded-2xl bg-mist px-4 py-3">
-                  <p className="text-xs font-semibold text-ink/50">Groups</p>
-                  <p className="mt-1 text-sm font-bold text-deep-navy">Max 5</p>
-                </div>
               </div>
-              <Link
-                href="/book"
-                className="mt-5 flex items-center justify-between rounded-2xl bg-deep-navy px-4 py-4 text-white"
-              >
-                <span>
-                  <span className="block text-xs font-semibold text-white/70">Next step</span>
-                  <span className="mt-0.5 block text-sm font-bold">Tell us the year group. We match the tutor.</span>
-                </span>
-                <span className="text-sm font-bold text-accent-soft">Book</span>
-              </Link>
             </div>
           </Reveal>
         </div>

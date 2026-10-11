@@ -1,3 +1,4 @@
+import VideoCard from "@/components/VideoCard";
 import { VIDEO_REVIEWS, WRITTEN_REVIEWS } from "@/lib/content";
 
 export default function ReviewsGallery() {
@@ -37,19 +38,9 @@ export default function ReviewsGallery() {
           text="Short clips from parents and students about their experience with TutorVille."
           count={VIDEO_REVIEWS.length}
         />
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {VIDEO_REVIEWS.map((src, i) => (
-            <figure key={src} className="overflow-hidden rounded-3xl bg-white p-2 shadow-sm ring-1 ring-line">
-              <video
-                src={src}
-                controls
-                playsInline
-                preload="metadata"
-                aria-label={`Video review ${i + 1}`}
-                className="aspect-video w-full rounded-2xl bg-deep-navy object-contain"
-              />
-              <figcaption className="px-3 pb-2 pt-3 text-sm font-bold text-deep-navy">Video review {i + 1}</figcaption>
-            </figure>
+            <VideoCard key={src} src={src} label={`Video review ${i + 1}`} />
           ))}
         </div>
       </section>

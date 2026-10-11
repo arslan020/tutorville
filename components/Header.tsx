@@ -10,7 +10,8 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <>
@@ -82,15 +83,14 @@ export default function Header() {
           </button>
         </div>
         <div className="flex flex-col gap-1 px-4 py-4">
-          <Link href="/" onClick={() => setOpen(false)} className="rounded-xl px-3 py-3 text-sm font-semibold text-ink hover:bg-mist">
-            Home
-          </Link>
           {NAV.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="rounded-xl px-3 py-3 text-sm font-semibold text-ink hover:bg-sky hover:text-navy"
+              className={`rounded-xl px-3 py-3 text-sm font-semibold hover:bg-sky hover:text-navy ${
+                isActive(link.href) ? "bg-sky text-navy" : "text-ink"
+              }`}
             >
               {link.label}
             </Link>

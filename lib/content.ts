@@ -16,6 +16,7 @@ export const SITE = {
 export const BOOKING_CALENDAR_URL = "";
 
 export const NAV = [
+  { label: "Home", href: "/" },
   { label: "Tutors", href: "/tutors" },
   { label: "Prices", href: "/prices" },
   { label: "Reviews", href: "/reviews" },
