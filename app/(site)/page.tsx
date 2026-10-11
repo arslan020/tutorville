@@ -176,8 +176,8 @@ export default function HomePage() {
             {TUTORS.map((tutor, i) => (
               <Reveal key={tutor.name} delayMs={i * 70}>
                 <article className="flex h-full flex-col rounded-3xl bg-white p-6 shadow-sm ring-1 ring-line">
-                  <div className="flex items-center gap-3">
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-2xl text-lg font-extrabold text-white ${AVATARS[i]}`}>
+                  <div className="flex items-center gap-3 lg:min-h-[3.75rem]">
+                    <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl text-lg font-extrabold text-white ${AVATARS[i]}`}>
                       {tutor.name.slice(0, 1)}
                     </div>
                     <div>
@@ -185,8 +185,8 @@ export default function HomePage() {
                       <p className="text-xs font-semibold text-navy">{tutor.highlights[0]}</p>
                     </div>
                   </div>
-                  <p className="mt-4 text-sm leading-relaxed text-ink/75">{tutor.role}</p>
-                  <ul className="mt-4 space-y-2 border-t border-line pt-4 text-sm text-ink/80">
+                  <p className="mt-4 text-sm leading-relaxed text-ink/75 lg:min-h-[3rem]">{tutor.role}</p>
+                  <ul className="mt-4 space-y-2.5 border-t border-line pt-4 text-sm leading-relaxed text-ink/80">
                     {tutor.highlights.slice(1, 4).map((item) => (
                       <li key={item} className="flex gap-2">
                         <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />

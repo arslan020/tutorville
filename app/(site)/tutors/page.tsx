@@ -6,7 +6,7 @@ import { TUTORS } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Tutors" };
 
-const AVATARS = ["bg-navy", "bg-[#128A7E]", "bg-accent"];
+const AVATARS = ["bg-navy", "bg-[#7E6BB5]", "bg-accent"];
 
 export default function TutorsPage() {
   return (
