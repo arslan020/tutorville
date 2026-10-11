@@ -91,8 +91,8 @@ export default function HomePage() {
                         </svg>
                       </span>
                       <span>
-                        <span className="block text-xs font-semibold text-ink/55">Where</span>
-                        <span className="block text-sm font-bold text-deep-navy">Online or home</span>
+                        <span className="block text-xs font-semibold text-ink/55">Location</span>
+                        <span className="block text-sm font-bold text-deep-navy">Online or at home</span>
                       </span>
                     </div>
                     <div className="flex items-center gap-3 rounded-2xl bg-accent-soft px-4 py-3">
