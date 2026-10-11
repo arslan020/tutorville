@@ -5,14 +5,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#1554C0",
-        "deep-navy": "#0E2F5C",
-        accent: "#F26B2A",
-        "accent-soft": "#FFF1E8",
-        sky: "#E7F1FF",
-        mist: "#F5F8FC",
-        line: "#D9E4F2",
-        ink: "#1B2A41",
+        navy: "#5A589E",
+        "deep-navy": "#34315F",
+        accent: "#A84D80",
+        "accent-soft": "#F6E4EE",
+        sky: "#EEEDF8",
+        mist: "#FBF8FC",
+        line: "#E6E0F0",
+        ink: "#2C2844",
       },
       fontFamily: {
         sans: ["var(--font-jakarta)"],

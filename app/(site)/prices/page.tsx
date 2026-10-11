@@ -22,7 +22,7 @@ export default function PricesPage() {
         <div className="mx-auto max-w-6xl px-5 pb-14 sm:px-6">
           <Link
             href="/book"
-            className="inline-flex rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-[#d85a1d]"
+            className="inline-flex rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-[#8E3D6A]"
           >
             Book your free lesson
           </Link>

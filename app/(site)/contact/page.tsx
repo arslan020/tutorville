@@ -4,13 +4,13 @@ import EnquiryForm from "@/components/EnquiryForm";
 import Reveal from "@/components/Reveal";
 import { SITE } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = { title: "Contact us" };
 
 export default function ContactPage() {
   return (
     <main>
       <PageHero
-        eyebrow="Contact"
+        eyebrow="Contact us"
         title="Talk to TutorVille"
         lead="Ask about tutoring, levels, or a free introductory lesson. We will match your child with the right tutor."
       />

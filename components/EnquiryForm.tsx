@@ -110,7 +110,7 @@ export default function EnquiryForm({ intent }: EnquiryFormProps) {
 
       <button
         type="submit"
-        className="mt-6 w-full rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-[#d85a1d]"
+        className="mt-6 w-full rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-[#8E3D6A]"
       >
         {intent === "book" ? "Request your free lesson" : "Send message"}
       </button>

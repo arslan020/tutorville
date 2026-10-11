@@ -11,16 +11,16 @@ const DISCOVER = [
 
 const CONNECT = [
   { label: "Book a free lesson", href: "/book" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact us", href: "/contact" },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-deep-navy text-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl items-start gap-8 px-5 py-8 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div className="max-w-xs">
           <Logo inverted />
-          <p className="mt-4 text-sm leading-relaxed text-white/75">{SITE.brandStatement}</p>
+          <p className="mt-4 max-w-[16rem] text-sm leading-relaxed text-white/75">{SITE.brandStatement}</p>
         </div>
         <FooterList heading="Explore" links={DISCOVER} />
         <FooterList heading="Get started" links={CONNECT} />
@@ -42,7 +42,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-5 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-4 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
           <p>
             Powered by{" "}

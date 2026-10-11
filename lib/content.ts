@@ -1,7 +1,7 @@
 export const SITE = {
   name: "TutorVille",
   tagline: "Where Learning is a Journey, not a Destination",
-  range: "From Reception all the way to A levels",
+  range: "From Reception all the way to A level",
   email: "tutorville@outlook.co.uk",
   phoneDisplay: "07429 012363",
   phoneTel: "+447429012363",
@@ -19,10 +19,10 @@ export const NAV = [
   { label: "Tutors", href: "/tutors" },
   { label: "Prices", href: "/prices" },
   { label: "Reviews", href: "/reviews" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact us", href: "/contact" },
 ];
 
-export const LEVELS = ["Reception", "KS1", "KS2", "KS3", "GCSE", "A Level"];
+export const LEVELS = ["Reception", "KS1", "KS2", "KS3", "GCSE", "A level"];
 
 export const WHY = [
   {
@@ -51,7 +51,7 @@ export type Tutor = {
 export const TUTORS: Tutor[] = [
   {
     name: "Kiran",
-    role: "Maths & English tutor for KS2, KS3, GCSE and A Levels",
+    role: "Maths & English tutor for KS2, KS3, GCSE and A level",
     highlights: [
       "UCL graduate",
       "10+ years of tutoring",
@@ -71,7 +71,7 @@ export const TUTORS: Tutor[] = [
   },
   {
     name: "Manav",
-    role: "Maths, English and Sciences for KS2, KS3, GCSE and A Levels",
+    role: "Maths, English and Sciences for KS2, KS3, GCSE and A level",
     highlights: [
       "Interview preparation and personal statement reviews",
       "10+ years of tutoring",
@@ -90,7 +90,7 @@ export type PriceRow = {
 };
 
 export const IN_PERSON_PRICES: PriceRow[] = [
-  { level: "A Levels", subject: "Maths / English", price: "From £50", note: "per lesson, depending on travel" },
+  { level: "A level", subject: "Maths / English", price: "From £50", note: "per lesson, depending on travel" },
   { level: "GCSE", subject: "Maths / English", price: "From £40", note: "per lesson, depending on travel" },
   { level: "KS3", subject: "Maths / English", price: "From £30", note: "per lesson, depending on travel" },
   { level: "KS2", subject: "Maths / English", price: "From £30", note: "per lesson, depending on travel" },
@@ -99,7 +99,7 @@ export const IN_PERSON_PRICES: PriceRow[] = [
 ];
 
 export const ONLINE_PRICES: PriceRow[] = [
-  { level: "A Levels", subject: "Maths / English", price: "From £45", note: "per lesson" },
+  { level: "A level", subject: "Maths / English", price: "From £45", note: "per lesson" },
   { level: "GCSE", subject: "Maths / English", price: "From £35", note: "per lesson" },
   { level: "KS3", subject: "Maths / English", price: "From £30", note: "per lesson" },
   { level: "KS2", subject: "Maths / English", price: "From £30", note: "per lesson" },
@@ -107,5 +107,22 @@ export const ONLINE_PRICES: PriceRow[] = [
   { level: "Reception", subject: "Maths / English", price: "From £25", note: "per lesson" },
 ];
 
-export const YEAR_GROUPS = ["Reception", "KS1", "KS2", "KS3", "GCSE", "A Level", "11+"];
+export const YEAR_GROUPS = ["Reception", "KS1", "KS2", "KS3", "GCSE", "A level", "11+"];
+
+export const WRITTEN_REVIEWS = Array.from({ length: 12 }, (_, i) => {
+  const n = String(i + 1).padStart(2, "0");
+  const ext = n === "10" || n === "12" ? "png" : "jpeg";
+  return `/reviews/photos/${n}.${ext}`;
+});
+
+export const VIDEO_REVIEWS = [
+  "/reviews/videos/01.mp4",
+  "/reviews/videos/02.mov",
+  "/reviews/videos/03.mov",
+  "/reviews/videos/04.mp4",
+  "/reviews/videos/05.mov",
+  "/reviews/videos/06.mp4",
+  "/reviews/videos/07.mp4",
+  "/reviews/videos/08.mp4",
+];
 export const SUBJECTS = ["Maths", "English", "Sciences", "Interview preparation", "Personal statement review"];
