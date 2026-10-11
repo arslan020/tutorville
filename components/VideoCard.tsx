@@ -15,15 +15,18 @@ export default function VideoCard({ src, label }: VideoCardProps) {
     <figure className="overflow-hidden rounded-3xl bg-white p-2 shadow-sm ring-1 ring-line">
       <div className="flex justify-center rounded-2xl bg-deep-navy">
         <video
-          src={src}
+          // "#t=0.1" makes mobile browsers (iPhone Safari) paint a real first frame
+          // instead of an empty box before the video is played.
+          src={`${src}#t=0.1`}
           controls
           playsInline
           preload="metadata"
           aria-label={label}
           style={{ aspectRatio: ratio }}
           onLoadedMetadata={(e) => {
-            const { videoWidth, videoHeight } = e.currentTarget;
-            if (videoWidth && videoHeight) setRatio(`${videoWidth} / ${videoHeight}`);
+            const video = e.currentTarget;
+            if (video.videoWidth && video.videoHeight) setRatio(`${video.videoWidth} / ${video.videoHeight}`);
+            if (video.currentTime === 0) video.currentTime = 0.1;
           }}
           className="w-full rounded-2xl bg-deep-navy object-contain"
         />
