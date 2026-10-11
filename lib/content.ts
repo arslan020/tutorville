@@ -110,11 +110,56 @@ export const ONLINE_PRICES: PriceRow[] = [
 
 export const YEAR_GROUPS = ["Reception", "KS1", "KS2", "KS3", "GCSE", "A level", "11+"];
 
-export const WRITTEN_REVIEWS = Array.from({ length: 12 }, (_, i) => {
-  const n = String(i + 1).padStart(2, "0");
-  const ext = n === "10" || n === "12" ? "png" : "jpeg";
-  return `/reviews/photos/${n}.${ext}`;
-});
+export type WrittenReview = { text: string; author: string; note?: string };
+
+// Text copied from the parent messages the client supplied (screenshots kept in /public/reviews/photos).
+export const WRITTEN_REVIEWS: WrittenReview[] = [
+  {
+    text: "Ms. Kaur has been excellent teacher. Our daughter progressed a lot with her teaching. Without her, we wouldn't imagine the progress we have seen. Our daughter loves to study with her. It has been 2 years and we look forward to many more years of Ms. Kaur as a teacher for my daughter. I must also emphasize that she has progressed even better during lockdown learning online with Ms. Kaur. We absolutely recommend her with five stars.",
+    author: "Nilay",
+  },
+  {
+    text: "Hi Krishan, hope all well with you. We were away most of the summer. Avy has joined Hampton school and is loving it there. Thanks for helping him achieve such good results. He got an offer from City of London and Ibstock school that we declined and is also on reserve list with St Paul's school.",
+    author: "Parent",
+  },
+  {
+    text: "We have been using Krishan for about 5/6 months now and are really pleased with what she has achieved so far with our son. We initially had feedback from our son's school on areas that he needed to improve, which allowed Krishan to plan his tutoring sessions accordingly. She is professional, but firm with her approach and always gives feedback at the end of each session. She tutored our son through his SATs, where he is now able to tackle the papers independently. There are many areas she has covered in Maths and English that will leave him ahead of his class. Krishan has been a great asset to our son's school work - Thank you!",
+    author: "M Antao-Kolawole",
+  },
+  {
+    text: "Mrs. Krishan has been wonderful tutor for my son Zoravar Singh. We started English lessons with her in November 2022 and we have seen a big improvement in his English work for the past few months. I got a lovely feedback from his school teacher and we have started Maths lessons with Mrs. Krishan as well. She always gives me a feedback after every lesson which helps me a lot. Zoravar enjoys his lessons with Mrs. Krishan because she is very patient and friendly. I would definitely recommend Mrs. Krishan to other parents.",
+    author: "Parent of Zoravar",
+  },
+  {
+    text: "Krishan has been working with Neel since last 2 years. The rapport she built in first few sessions was very helpful in bringing out best in him. His concepts are clear and he is ahead in his class clearly because of his sessions with Krishan. Neel shares not only his educational troubles with her but his personal anxieties too with confidence that she is always there for him, boosting his self esteem. Zoom lessons are also delivered to same standard and encouragement. Will highly recommend Krishan.",
+    author: "Suman",
+  },
+  {
+    text: "Just wanted to say that I've seen a real improvement in Rosie since she has been coming to you for tutoring lessons. Her confidence has grown so much and I can see that she is now taking pride in her work. She is also much better at working independently. We just received her end of year report which was really brilliant, it showed that she was progressing really well and she seems much more confident in class. Thank you so much for all the help you've given us. She is also now at the expected level in reading and writing which was the area she was falling a little behind so this is great news - thanks once again.",
+    author: "Kelly",
+  },
+  {
+    text: "Krishan has really enhanced our daughter's confidence in English and Maths. Her tutoring methodology is both encouraging and constructive, fostering a positive and engaging learning environment. Seeing our child enthusiastic about learning is priceless. Thank you Krishan.",
+    author: "Parent",
+  },
+  {
+    text: "We are so grateful that Neil got a tutor like you. We have seen a massive improvement in his reading, writing and fine motor skills since he started taking lessons from you. Thank you for teaching and supporting Neil. Well done!",
+    author: "Parent of Neil",
+  },
+  {
+    text: "Krishan has been working with Mausam since last two years. First few sessions with Krishan were enough to build lasting bond and bring out best in Mausam. Mausam's English vocabulary, speech and grammar improved tremendously within couple of months. She progressed in maths equally well. She is now well ahead of her class in both Maths and English.",
+    author: "Suman",
+  },
+  {
+    text: "Neel got his mock SAT results today. English reading 47/50, Maths arithmetic 40/40, Maths reasoning 33/35, Maths reasoning 35/35. Thank you for being there for him.. he has done it while enjoying it.",
+    author: "Suman",
+  },
+  {
+    text: "All thanks to you.",
+    author: "A House Dad",
+    note: "On his son's Ashton House School pre-prep report",
+  },
+];
 
 export const VIDEO_REVIEWS = [
   "/reviews/videos/01.mp4",

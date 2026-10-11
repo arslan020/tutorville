@@ -17,7 +17,7 @@ export default function ReviewsPage() {
             What parents say about {SITE.name}
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink/75 sm:text-lg">
-            Written screenshots and video reviews, shared by parents whose children learn with our tutors.
+            Written and video reviews, shared by parents whose children learn with our tutors.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">

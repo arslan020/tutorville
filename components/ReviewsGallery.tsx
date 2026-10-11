@@ -8,25 +8,28 @@ export default function ReviewsGallery() {
         <SectionHeading
           eyebrow="Written reviews"
           title="Messages from parents"
-          text="Screenshots of feedback shared by TutorVille parents. Tap one to view it full size."
+          text="Feedback shared by TutorVille parents about their children's lessons."
           count={WRITTEN_REVIEWS.length}
         />
-        <div className="mt-8 columns-1 gap-5 sm:columns-2 lg:columns-3">
-          {WRITTEN_REVIEWS.map((src, i) => (
-            <a
-              key={src}
-              href={src}
-              target="_blank"
-              rel="noreferrer"
-              className="group mb-5 block break-inside-avoid overflow-hidden rounded-3xl bg-white p-2 shadow-sm ring-1 ring-line transition hover:shadow-lg hover:ring-navy/40"
+        <div className="mt-8 columns-1 gap-4 sm:columns-2 sm:gap-5 lg:columns-3">
+          {WRITTEN_REVIEWS.map((review, i) => (
+            <figure
+              key={i}
+              className="mb-4 break-inside-avoid rounded-3xl bg-white p-5 shadow-sm ring-1 ring-line sm:mb-5 sm:p-6"
             >
-              <img
-                src={src}
-                alt={`Written review ${i + 1} from a TutorVille parent`}
-                loading="lazy"
-                className="h-auto w-full rounded-2xl"
-              />
-            </a>
+              <blockquote className="text-[15px] leading-relaxed text-ink/85">
+                &ldquo;{review.text}&rdquo;
+              </blockquote>
+              <figcaption className="mt-4 flex items-center gap-3 border-t border-line pt-4">
+                <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-sky text-sm font-extrabold text-navy">
+                  {review.author.slice(0, 1)}
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-sm font-bold text-deep-navy">{review.author}</span>
+                  {review.note ? <span className="block text-xs text-ink/60">{review.note}</span> : null}
+                </span>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </section>
