@@ -12,7 +12,7 @@ export default function VideoCard({ src, label }: VideoCardProps) {
   const [ratio, setRatio] = useState("9 / 16");
 
   return (
-    <figure className="overflow-hidden rounded-3xl bg-white p-2 shadow-sm ring-1 ring-line">
+    <figure className="overflow-hidden rounded-2xl bg-white p-1.5 shadow-sm ring-1 ring-line sm:rounded-3xl sm:p-2">
       <div className="flex justify-center rounded-2xl bg-deep-navy">
         <video
           // "#t=0.1" makes mobile browsers (iPhone Safari) paint a real first frame
@@ -31,7 +31,7 @@ export default function VideoCard({ src, label }: VideoCardProps) {
           className="w-full rounded-2xl bg-deep-navy object-contain"
         />
       </div>
-      <figcaption className="px-3 pb-2 pt-3 text-sm font-bold text-deep-navy">{label}</figcaption>
+      <figcaption className="px-2 pb-1.5 pt-2 text-xs font-bold text-deep-navy sm:px-3 sm:pb-2 sm:pt-3 sm:text-sm">{label}</figcaption>
     </figure>
   );
 }

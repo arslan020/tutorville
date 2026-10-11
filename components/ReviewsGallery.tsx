@@ -38,7 +38,7 @@ export default function ReviewsGallery() {
           text="Short clips from parents and students about their experience with TutorVille."
           count={VIDEO_REVIEWS.length}
         />
-        <div className="mt-8 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 items-start gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
           {VIDEO_REVIEWS.map((src, i) => (
             <VideoCard key={src} src={src} label={`Video review ${i + 1}`} />
           ))}
