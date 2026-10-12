@@ -43,10 +43,7 @@ function PriceCard({ title, rows, delayMs = 0 }: { title: string; rows: PriceRow
         <ul>
           {rows.map((row) => (
             <li key={row.level} className="flex items-start justify-between gap-4 border-b border-line px-6 py-4 last:border-b-0">
-              <div>
-                <p className="font-bold text-deep-navy">{row.level}</p>
-                <p className="text-sm text-ink/60">{row.subject}</p>
-              </div>
+              <p className="text-lg font-bold text-deep-navy">{row.level}</p>
               <div className="text-right">
                 <p className="text-xl font-extrabold text-navy">{row.price}</p>
                 <p className="text-xs text-ink/55">{row.note}</p>

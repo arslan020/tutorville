@@ -6,7 +6,7 @@ export const SITE = {
   phoneDisplay: "07429 012363",
   phoneTel: "+447429012363",
   contactName: "Kiran Kaur",
-  brandStatement: "Expert Maths and English tutoring, tailored to each child. From Reception to A level.",
+  brandStatement: "Expert tutoring, tailored to each child. From Reception to A level.",
 };
 
 /**
@@ -25,26 +25,33 @@ export const NAV = [
 
 export const LEVELS = ["Reception", "KS1", "KS2", "KS3", "GCSE", "A level"];
 
+export const WHY_HEADING = "Why should you choose TutorVille?";
+
+export const WHY_INTRO =
+  "We provide expert tutoring in Math and English. Our tutors are experienced, dedicated, and adapt to the individual learning style of each student. We cover all levels from Reception to A level, ensuring a comprehensive understanding of subjects. Choose us for a unique, effective learning experience!";
+
 export const WHY = [
   {
     number: "01",
     title: "Expert Tutors",
-    text: "Highly qualified tutors from Russell Group universities and Oxbridge. They are experienced, credentialed, and passionate about nurturing each child's unique talents. Lessons are personalised around how your child learns best, in a supportive setting where they feel able to grow.",
+    text: "Highly Qualified Tutors from Russell Group Universities & Oxbridge - Our tutors are highly qualified with extensive experience and credentials. More importantly, they are passionate about nurturing each child's unique talents and abilities. We take a personalised approach, getting to know each student's learning style and customising lessons to help them thrive. Our tutors create an engaging, supportive environment where students feel empowered to learn, grow, and pursue their full potential.",
   },
   {
     number: "02",
     title: "Personalised Learning Plans",
-    text: "Learning is an adventure at TutorVille. Tutors design dynamic lessons that make academics exciting, with imaginative tools that spark curiosity. Students take part because lessons feel rewarding, full of discovery, creativity, and challenges worth conquering.",
+    text: "Learning is an adventure at TutorVille! Tutors design dynamic lessons that make academics exciting. We incorporate imaginative learning tools that spark curiosity and motivation. Students are eager to participate because our tutors make education fun and rewarding. Your child will look forward to lessons filled with discovery, creativity, and meaningful challenges to conquer.",
   },
   {
     number: "03",
     title: "Frequent Progress Updates",
-    text: "Communication with parents is essential. Tutors give detailed face-to-face feedback after each session so you stay fully informed. We set goals with you, share successes, and keep your child on the best path through their education.",
+    text: "We believe communication with parents is essential. Tutors provide detailed face-to-face feedback after each session to keep you fully informed about your child's development. We will collaborate with you to set goals, share successes, and ensure your child receives the best possible guidance on their educational journey.",
   },
 ];
 
 export type Tutor = {
   name: string;
+  photo?: string;
+  photoFocus?: string;
   role: string;
   highlights: string[];
 };
@@ -52,6 +59,8 @@ export type Tutor = {
 export const TUTORS: Tutor[] = [
   {
     name: "Kiran",
+    photo: "/tutors/kiran.jpg",
+    photoFocus: "50% 32%",
     role: "Maths & English tutor for KS2, KS3, GCSE and A level",
     highlights: [
       "UCL graduate",
@@ -62,6 +71,8 @@ export const TUTORS: Tutor[] = [
   },
   {
     name: "Krishan",
+    photo: "/tutors/krishan.jpg",
+    photoFocus: "55% 30%",
     role: "Maths & English tutor for KS1, KS2 and 11+",
     highlights: [
       "15+ years of tutoring",
@@ -72,6 +83,8 @@ export const TUTORS: Tutor[] = [
   },
   {
     name: "Manav",
+    photo: "/tutors/manav.jpg",
+    photoFocus: "50% 32%",
     role: "Maths, English and Sciences for KS2, KS3, GCSE and A level",
     highlights: [
       "Interview preparation and personal statement reviews",
@@ -85,27 +98,26 @@ export const TUTORS: Tutor[] = [
 
 export type PriceRow = {
   level: string;
-  subject: string;
   price: string;
   note?: string;
 };
 
 export const IN_PERSON_PRICES: PriceRow[] = [
-  { level: "A level", subject: "Maths / English", price: "From £50", note: "per lesson, depending on travel" },
-  { level: "GCSE", subject: "Maths / English", price: "From £40", note: "per lesson, depending on travel" },
-  { level: "KS3", subject: "Maths / English", price: "From £30", note: "per lesson, depending on travel" },
-  { level: "KS2", subject: "Maths / English", price: "From £30", note: "per lesson, depending on travel" },
-  { level: "KS1", subject: "Maths / English", price: "From £30", note: "per lesson, depending on travel" },
-  { level: "Reception", subject: "Maths / English", price: "From £25", note: "per lesson, depending on travel" },
+  { level: "A level", price: "From £50", note: "per lesson, depending on travel" },
+  { level: "GCSE", price: "From £40", note: "per lesson, depending on travel" },
+  { level: "KS3", price: "From £30", note: "per lesson, depending on travel" },
+  { level: "KS2", price: "From £30", note: "per lesson, depending on travel" },
+  { level: "KS1", price: "From £30", note: "per lesson, depending on travel" },
+  { level: "Reception", price: "From £25", note: "per lesson, depending on travel" },
 ];
 
 export const ONLINE_PRICES: PriceRow[] = [
-  { level: "A level", subject: "Maths / English", price: "From £45", note: "per lesson" },
-  { level: "GCSE", subject: "Maths / English", price: "From £35", note: "per lesson" },
-  { level: "KS3", subject: "Maths / English", price: "From £30", note: "per lesson" },
-  { level: "KS2", subject: "Maths / English", price: "From £30", note: "per lesson" },
-  { level: "KS1", subject: "Maths / English", price: "From £30", note: "per lesson" },
-  { level: "Reception", subject: "Maths / English", price: "From £25", note: "per lesson" },
+  { level: "A level", price: "From £45", note: "per lesson" },
+  { level: "GCSE", price: "From £35", note: "per lesson" },
+  { level: "KS3", price: "From £30", note: "per lesson" },
+  { level: "KS2", price: "From £30", note: "per lesson" },
+  { level: "KS1", price: "From £30", note: "per lesson" },
+  { level: "Reception", price: "From £25", note: "per lesson" },
 ];
 
 export const YEAR_GROUPS = ["Reception", "KS1", "KS2", "KS3", "GCSE", "A level", "11+"];

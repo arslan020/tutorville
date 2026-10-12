@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ReviewsGallery from "@/components/ReviewsGallery";
-import { SITE, VIDEO_REVIEWS, WRITTEN_REVIEWS } from "@/lib/content";
+import { SITE } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Reviews" };
 
@@ -9,33 +9,16 @@ export default function ReviewsPage() {
   return (
     <main>
       <section className="bg-gradient-to-b from-sky via-white to-white">
-        <div className="mx-auto max-w-6xl px-5 pb-10 pt-12 sm:px-6 sm:pt-16">
+        <div className="mx-auto max-w-6xl px-5 pb-10 pt-12 text-center sm:px-6 sm:pt-16">
           <p className="inline-flex rounded-full bg-white px-3 py-1 text-sm font-semibold text-navy ring-1 ring-line">
             Reviews
           </p>
-          <h1 className="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.08] tracking-tight text-deep-navy sm:text-5xl">
+          <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-extrabold leading-[1.08] tracking-tight text-deep-navy sm:text-5xl">
             What parents say about {SITE.name}
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink/75 sm:text-lg">
-            Written and video reviews, shared by parents whose children learn with our tutors.
+          <p className="mt-4 text-base leading-relaxed text-ink/75 sm:text-lg md:whitespace-nowrap">
+            Video and written reviews, shared by parents whose children learn with our tutors.
           </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="#written-reviews"
-              className="inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 ring-1 ring-line transition hover:ring-navy"
-            >
-              <span className="text-3xl font-extrabold text-deep-navy">{WRITTEN_REVIEWS.length}</span>
-              <span className="text-sm font-bold text-navy">Written reviews</span>
-            </a>
-            <a
-              href="#video-reviews"
-              className="inline-flex items-center gap-3 rounded-2xl bg-white px-5 py-3 ring-1 ring-line transition hover:ring-navy"
-            >
-              <span className="text-3xl font-extrabold text-deep-navy">{VIDEO_REVIEWS.length}</span>
-              <span className="text-sm font-bold text-navy">Video reviews</span>
-            </a>
-          </div>
         </div>
       </section>
 

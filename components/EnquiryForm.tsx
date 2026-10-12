@@ -114,8 +114,11 @@ export default function EnquiryForm({ intent }: EnquiryFormProps) {
       >
         {intent === "book" ? "Request your free lesson" : "Send message"}
       </button>
-      <p className="mt-3 text-xs leading-relaxed text-ink/60">
-        This opens your email app addressed to {SITE.email}, so the enquiry reaches TutorVille directly.
+      <p className="mt-3 text-xs leading-relaxed text-ink/60 sm:whitespace-nowrap">
+        For any other queries please email{" "}
+        <a href={`mailto:${SITE.email}`} className="font-semibold text-navy underline underline-offset-2">
+          {SITE.email}
+        </a>
       </p>
       {status === "sent" && (
         <p className="mt-3 text-sm text-navy">If your email app opened, send the message to finish the enquiry.</p>

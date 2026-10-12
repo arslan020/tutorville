@@ -36,15 +36,7 @@ export default function BookPage() {
               <div className="mt-8 overflow-hidden rounded-3xl border border-line bg-white">
                 <iframe title="Book a TutorVille lesson" src={BOOKING_CALENDAR_URL} className="h-[640px] w-full bg-white" />
               </div>
-            ) : (
-              <div className="mt-8 rounded-3xl border border-dashed border-navy/30 bg-white p-6">
-                <p className="text-sm font-bold text-deep-navy">Google Calendar</p>
-                <p className="mt-2 text-sm leading-relaxed text-ink/70">
-                  The live calendar will appear here once the Google Calendar link is connected. Until then, use the form and we
-                  will arrange the time with you.
-                </p>
-              </div>
-            )}
+            ) : null}
             <div className="mt-6 space-y-2 text-sm">
               <p>
                 Call{" "}

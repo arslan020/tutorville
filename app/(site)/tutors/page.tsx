@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
+import TutorAvatar from "@/components/TutorAvatar";
 import { TUTORS } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Tutors" };
@@ -21,9 +22,14 @@ export default function TutorsPage() {
           {TUTORS.map((tutor, i) => (
             <Reveal key={tutor.name} delayMs={i * 50}>
               <article className="grid gap-5 rounded-3xl border border-line bg-mist p-6 sm:p-8 md:grid-cols-[auto_1fr] md:items-start">
-                <div className={`flex h-16 w-16 items-center justify-center rounded-2xl text-2xl font-extrabold text-white ${AVATARS[i]}`}>
-                  {tutor.name.slice(0, 1)}
-                </div>
+                <TutorAvatar
+                  name={tutor.name}
+                  photo={tutor.photo}
+                  focus={tutor.photoFocus}
+                  sizeClass="h-20 w-20 sm:h-24 sm:w-24"
+                  textClass="text-2xl"
+                  colorClass={AVATARS[i]}
+                />
                 <div>
                   <h2 className="text-2xl font-extrabold tracking-tight text-deep-navy">{tutor.name}</h2>
                   <p className="mt-1 text-base text-ink/75">{tutor.role}</p>

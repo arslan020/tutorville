@@ -11,6 +11,15 @@ body {
   background: #ffffff;
 }
 
+@keyframes review-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 ::selection {
   background: #e6e0f4;
   color: #34315f;
