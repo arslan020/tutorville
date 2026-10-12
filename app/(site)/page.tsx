@@ -47,13 +47,8 @@ export default function HomePage() {
 
           <Reveal delayMs={80}>
             <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-              <div aria-hidden="true" className="absolute -right-4 -top-6 h-40 w-40 rounded-full bg-accent-soft blur-2xl sm:h-56 sm:w-56" />
-              <div aria-hidden="true" className="absolute -bottom-8 -left-4 h-40 w-40 rounded-full bg-[#DAD7F2] blur-2xl sm:h-56 sm:w-56" />
-
               <div className="relative overflow-hidden rounded-[28px] bg-white shadow-[0_24px_60px_rgba(52,49,95,0.14)] ring-1 ring-line">
                 <div className="relative bg-gradient-to-br from-navy to-deep-navy px-5 pb-6 pt-5 text-white sm:px-7 sm:pb-7 sm:pt-6">
-                  <div aria-hidden="true" className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-white/10" />
-                  <div aria-hidden="true" className="absolute -bottom-12 right-16 h-28 w-28 rounded-full bg-accent/30" />
                   <div className="relative flex items-center justify-between gap-3">
                     <p className="text-sm font-bold">Subjects we cover</p>
                   </div>
@@ -82,8 +77,8 @@ export default function HomePage() {
                     ))}
                   </div>
 
-                  <div className="mt-4 grid gap-3 min-[420px]:grid-cols-2">
-                    <div className="flex items-center gap-3 rounded-2xl bg-sky px-4 py-3">
+                  <div className="mt-4 grid grid-cols-2 gap-3">
+                    <div className="col-span-2 flex items-center gap-3 rounded-2xl bg-sky px-4 py-3">
                       <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white text-navy">
                         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
                           <path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z" />
@@ -95,6 +90,15 @@ export default function HomePage() {
                         <span className="block text-sm font-bold text-deep-navy">Online or In Person</span>
                       </span>
                     </div>
+                    <div className="flex items-center gap-3 rounded-2xl bg-sky px-4 py-3">
+                      <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white text-navy">
+                        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="8" r="3.2" />
+                          <path d="M5.5 20c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2" />
+                        </svg>
+                      </span>
+                      <span className="text-sm font-bold text-deep-navy">1 to 1</span>
+                    </div>
                     <div className="flex items-center gap-3 rounded-2xl bg-accent-soft px-4 py-3">
                       <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white text-accent">
                         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
@@ -105,10 +109,7 @@ export default function HomePage() {
                       </span>
                       <span>
                         <span className="block text-xs font-semibold text-ink/55">Groups</span>
-                        <span className="flex items-center gap-2 text-sm font-bold text-deep-navy">
-                          Max 5
-                          <span className="rounded-full bg-white px-2.5 py-0.5 text-xs font-extrabold text-accent">1 to 1</span>
-                        </span>
+                        <span className="block text-sm font-bold text-deep-navy">Max 5</span>
                       </span>
                     </div>
                   </div>
