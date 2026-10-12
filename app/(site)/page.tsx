@@ -181,7 +181,6 @@ export default function HomePage() {
                     <TutorAvatar
                       name={tutor.name}
                       photo={tutor.photo}
-                      focus={tutor.photoFocus}
                       sizeClass="h-12 w-12"
                       textClass="text-lg"
                       colorClass={AVATARS[i]}

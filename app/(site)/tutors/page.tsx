@@ -25,7 +25,6 @@ export default function TutorsPage() {
                 <TutorAvatar
                   name={tutor.name}
                   photo={tutor.photo}
-                  focus={tutor.photoFocus}
                   sizeClass="h-20 w-20 sm:h-24 sm:w-24"
                   textClass="text-2xl"
                   colorClass={AVATARS[i]}

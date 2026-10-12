@@ -51,7 +51,6 @@ export const WHY = [
 export type Tutor = {
   name: string;
   photo?: string;
-  photoFocus?: string;
   role: string;
   highlights: string[];
 };
@@ -60,7 +59,6 @@ export const TUTORS: Tutor[] = [
   {
     name: "Kiran",
     photo: "/tutors/kiran.jpg",
-    photoFocus: "50% 32%",
     role: "Maths & English tutor for KS2, KS3, GCSE and A level",
     highlights: [
       "UCL graduate",
@@ -72,7 +70,6 @@ export const TUTORS: Tutor[] = [
   {
     name: "Krishan",
     photo: "/tutors/krishan.jpg",
-    photoFocus: "55% 30%",
     role: "Maths & English tutor for KS1, KS2 and 11+",
     highlights: [
       "15+ years of tutoring",
@@ -84,7 +81,6 @@ export const TUTORS: Tutor[] = [
   {
     name: "Manav",
     photo: "/tutors/manav.jpg",
-    photoFocus: "50% 32%",
     role: "Maths, English and Sciences for KS2, KS3, GCSE and A level",
     highlights: [
       "Interview preparation and personal statement reviews",
