@@ -1,13 +1,14 @@
 type LogoProps = {
+  /** Use the light version of the logo on dark backgrounds (footer). */
   inverted?: boolean;
 };
 
 export default function Logo({ inverted = false }: LogoProps) {
   return (
     <img
-      src="/logo.png?v=3"
+      src={inverted ? "/logo-light.png?v=4" : "/logo.png?v=4"}
       alt="TutorVille"
-      className={`w-auto object-contain ${inverted ? "h-16" : "h-12 sm:h-14"}`}
+      className={`w-auto object-contain ${inverted ? "h-20" : "h-14 sm:h-16"}`}
     />
   );
 }
