@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/Logo";
-import { NAV } from "@/lib/content";
+import { NAV, SITE } from "@/lib/content";
 
 export default function Header() {
   const pathname = usePathname();
@@ -35,12 +35,21 @@ export default function Header() {
             ))}
           </nav>
 
-          <Link
-            href="/book"
-            className="hidden rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#8E3D6A] lg:inline-flex"
-          >
-            Book a free lesson
-          </Link>
+          <div className="hidden items-center gap-2 lg:flex">
+            <a
+              href={`tel:${SITE.phoneTel}`}
+              className="inline-flex items-center gap-2 rounded-full bg-navy px-4 py-2.5 text-sm font-bold text-white transition hover:bg-deep-navy"
+            >
+              <PhoneIcon />
+              Call us
+            </a>
+            <Link
+              href="/book"
+              className="inline-flex rounded-full bg-accent px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#8E3D6A]"
+            >
+              Book a free lesson
+            </Link>
+          </div>
 
           <button
             type="button"
@@ -95,15 +104,31 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <a
+            href={`tel:${SITE.phoneTel}`}
+            onClick={() => setOpen(false)}
+            className="mx-1 mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-navy px-4 py-3 text-sm font-bold text-white"
+          >
+            <PhoneIcon />
+            Call us
+          </a>
           <Link
             href="/book"
             onClick={() => setOpen(false)}
-            className="mx-1 mt-3 rounded-full bg-accent px-4 py-3 text-center text-sm font-bold text-white"
+            className="mx-1 rounded-full bg-accent px-4 py-3 text-center text-sm font-bold text-white"
           >
             Book a free lesson
           </Link>
         </div>
       </nav>
     </>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.81.3 1.6.54 2.36a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.76.24 1.55.42 2.36.54a2 2 0 011.72 2.05z" />
+    </svg>
   );
 }
