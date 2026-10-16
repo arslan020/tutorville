@@ -5,7 +5,13 @@ import type { WrittenReview } from "@/lib/content";
 
 const AUTO_MS = 8000;
 
-export default function ReviewsCarousel({ reviews }: { reviews: WrittenReview[] }) {
+export default function ReviewsCarousel({
+  reviews,
+  compact = false,
+}: {
+  reviews: WrittenReview[];
+  compact?: boolean;
+}) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const touchStartX = useRef<number | null>(null);
@@ -23,7 +29,7 @@ export default function ReviewsCarousel({ reviews }: { reviews: WrittenReview[] 
 
   return (
     <div
-      className="mx-auto max-w-3xl"
+      className={compact ? "w-full" : "mx-auto max-w-3xl"}
       role="region"
       aria-roledescription="carousel"
       aria-label="Written reviews from parents"
@@ -41,7 +47,11 @@ export default function ReviewsCarousel({ reviews }: { reviews: WrittenReview[] 
         if (Math.abs(delta) > 50) go(index + (delta < 0 ? 1 : -1));
       }}
     >
-      <div className="relative overflow-hidden rounded-[28px] bg-white shadow-[0_18px_50px_rgba(52,49,95,0.1)] ring-1 ring-line">
+      <div
+        className={`relative overflow-hidden bg-white ring-1 ring-line ${
+          compact ? "rounded-2xl shadow-sm" : "rounded-[28px] shadow-[0_18px_50px_rgba(52,49,95,0.1)]"
+        }`}
+      >
         <div
           className="flex transition-transform duration-500 ease-out motion-reduce:transition-none"
           style={{ transform: `translateX(-${index * 100}%)` }}
@@ -51,12 +61,22 @@ export default function ReviewsCarousel({ reviews }: { reviews: WrittenReview[] 
               key={i}
               aria-hidden={i !== index}
               aria-roledescription="slide"
-              className="flex w-full flex-shrink-0 flex-col justify-between px-6 py-8 sm:px-12 sm:py-12"
+              className={
+                compact
+                  ? "flex min-h-[168px] w-full flex-shrink-0 flex-col justify-between px-5 py-5 sm:min-h-[152px] sm:px-7 sm:py-6"
+                  : "flex w-full flex-shrink-0 flex-col justify-between px-6 py-8 sm:px-12 sm:py-12"
+              }
             >
-              <blockquote className="text-base leading-relaxed text-ink/85 sm:text-lg sm:leading-relaxed">
+              <blockquote
+                className={
+                  compact
+                    ? "line-clamp-4 text-sm leading-relaxed text-ink/85 sm:text-[0.95rem]"
+                    : "text-base leading-relaxed text-ink/85 sm:text-lg sm:leading-relaxed"
+                }
+              >
                 &ldquo;{review.text}&rdquo;
               </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 border-t border-line pt-5">
+              <figcaption className={`flex items-center gap-3 border-t border-line ${compact ? "mt-4 pt-3" : "mt-6 pt-5"}`}>
                 <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-sky text-sm font-extrabold text-navy">
                   {review.author.slice(0, 1)}
                 </span>

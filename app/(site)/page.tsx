@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ReviewsCarousel from "@/components/ReviewsCarousel";
 import TutorAvatar from "@/components/TutorAvatar";
-import { LEVELS, SITE, TUTORS, WHY, WHY_HEADING, WHY_INTRO } from "@/lib/content";
+import { LEVELS, SITE, TUTORS, WHY, WHY_HEADING, WHY_INTRO, WRITTEN_REVIEWS } from "@/lib/content";
 
 const SUBJECTS = ["Maths", "English", "Sciences", "11+", "Interview prep"];
 const AVATARS = ["bg-navy", "bg-[#7E6BB5]", "bg-accent"];
@@ -238,24 +239,28 @@ export default function HomePage() {
 
       <section className="bg-white pb-16 sm:pb-20">
         <div className="mx-auto max-w-6xl px-5 sm:px-6">
-          <Link
-            href="/reviews"
-            aria-label="Read TutorVille reviews"
-            className="group flex flex-col items-start justify-between gap-6 rounded-3xl bg-gradient-to-r from-sky to-accent-soft px-6 py-8 ring-1 ring-line transition hover:ring-navy sm:flex-row sm:items-center sm:px-10 sm:py-10"
-          >
-            <div>
-              <p className="text-sm font-bold text-accent">Reviews</p>
-              <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-deep-navy sm:text-3xl md:whitespace-nowrap">
-                See what parents say about TutorVille
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-ink/70 md:whitespace-nowrap">
-                Watch video reviews and read written reviews from parents.
-              </p>
+          <div className="rounded-3xl bg-gradient-to-r from-sky to-accent-soft px-6 py-8 ring-1 ring-line sm:px-10 sm:py-10">
+            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+              <div>
+                <p className="text-sm font-bold text-accent">Reviews</p>
+                <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-deep-navy sm:text-3xl md:whitespace-nowrap">
+                  See what parents say about TutorVille
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-ink/70 md:whitespace-nowrap">
+                  Watch video reviews and read written reviews from parents.
+                </p>
+              </div>
+              <Link
+                href="/reviews"
+                className="inline-flex flex-shrink-0 rounded-full bg-navy px-5 py-3 text-sm font-bold text-white transition hover:bg-deep-navy"
+              >
+                See More
+              </Link>
             </div>
-            <span className="inline-flex flex-shrink-0 rounded-full bg-navy px-5 py-3 text-sm font-bold text-white transition group-hover:bg-deep-navy">
-              Read reviews
-            </span>
-          </Link>
+            <div className="mt-6">
+              <ReviewsCarousel reviews={WRITTEN_REVIEWS} compact />
+            </div>
+          </div>
         </div>
       </section>
 

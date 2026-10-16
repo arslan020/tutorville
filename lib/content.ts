@@ -7,6 +7,7 @@ export const SITE = {
   phoneTel: "+447429012363",
   contactName: "Kiran Kaur",
   brandStatement: "Expert tutoring, tailored to each child. From Reception to A level.",
+  url: "https://www.tutorville.co.uk",
 };
 
 /**

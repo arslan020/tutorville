@@ -1,6 +1,9 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { SITE } from "@/lib/content";
+import { buildEnquiryEmail } from "@/lib/enquiry-email";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -8,14 +11,6 @@ function str(value: unknown, max = 500) {
   return String(value ?? "")
     .trim()
     .slice(0, max);
-}
-
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }
 
 export async function POST(request: Request) {
@@ -78,32 +73,26 @@ export async function POST(request: Request) {
 
   rows.push(["Message", message || "—"]);
 
-  const html = `
-    <div style="font-family:Arial,sans-serif;color:#2C2844;line-height:1.5">
-      <h2 style="margin:0 0 16px">${heading}</h2>
-      <table style="border-collapse:collapse">
-        ${rows
-          .map(
-            ([label, value]) =>
-              `<tr><td style="padding:6px 16px 6px 0;font-weight:bold;vertical-align:top">${label}</td><td style="padding:6px 0;white-space:pre-wrap">${escapeHtml(
-                value
-              )}</td></tr>`
-          )
-          .join("")}
-      </table>
-    </div>
-  `;
-  const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
+  const { html, text } = buildEnquiryEmail({ heading, rows, replyName: name });
+  const logo = await readFile(path.join(process.cwd(), "public", "email-logo.png"));
 
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
-      from: "TutorVille Website <onboarding@resend.dev>",
+      from: "TutorVille <onboarding@resend.dev>",
       to: SITE.email.toLowerCase(),
       replyTo: email,
       subject: `${heading} — ${name}`,
       html,
       text,
+      attachments: [
+        {
+          filename: "logo.png",
+          content: logo,
+          contentId: "tutorville-logo",
+          contentType: "image/png",
+        },
+      ],
     });
 
     if (error) {
