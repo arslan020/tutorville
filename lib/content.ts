@@ -2,7 +2,7 @@ export const SITE = {
   name: "TutorVille",
   tagline: "Where Learning is a Journey, not a Destination",
   range: "From Reception all the way to A level",
-  email: "tutorville@outlook.co.uk",
+  email: "TutorVille@outlook.com",
   phoneDisplay: "07429 012363",
   phoneTel: "+447429012363",
   contactName: "Kiran Kaur",
