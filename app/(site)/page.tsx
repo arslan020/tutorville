@@ -145,15 +145,17 @@ export default function HomePage() {
               <p className="mt-3 text-balance text-base leading-relaxed text-ink/75">{WHY_INTRO}</p>
             </Reveal>
           </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="mt-8 grid items-stretch gap-4 md:grid-cols-3">
             {WHY.map((item, i) => (
-              <Reveal key={item.title} delayMs={i * 70}>
+              <Reveal key={item.title} className="h-full" delayMs={i * 70}>
                 <article className="flex h-full flex-col rounded-3xl bg-mist p-6 ring-1 ring-line">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white text-sm font-extrabold text-navy ring-1 ring-line">
-                    {item.number}
-                  </span>
-                  <h3 className="mt-4 text-lg font-bold text-deep-navy">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink/75">{item.text}</p>
+                  <h3 className="flex items-center gap-3 text-lg font-bold text-deep-navy">
+                    <span className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-white text-sm font-extrabold text-navy ring-1 ring-line">
+                      {item.number}
+                    </span>
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-ink/75">{item.text}</p>
                 </article>
               </Reveal>
             ))}

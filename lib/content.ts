@@ -33,17 +33,17 @@ export const WHY_INTRO =
 
 export const WHY = [
   {
-    number: "01",
+    number: "1",
     title: "Expert Tutors",
     text: "Highly Qualified Tutors from Russell Group Universities & Oxbridge - Our tutors are highly qualified with extensive experience and credentials. More importantly, they are passionate about nurturing each child's unique talents and abilities. We take a personalised approach, getting to know each student's learning style and customising lessons to help them thrive. Our tutors create an engaging, supportive environment where students feel empowered to learn, grow, and pursue their full potential.",
   },
   {
-    number: "02",
+    number: "2",
     title: "Personalised Learning Plans",
     text: "Learning is an adventure at TutorVille! Tutors design dynamic lessons that make academics exciting. We incorporate imaginative learning tools that spark curiosity and motivation. Students are eager to participate because our tutors make education fun and rewarding. Your child will look forward to lessons filled with discovery, creativity, and meaningful challenges to conquer.",
   },
   {
-    number: "03",
+    number: "3",
     title: "Frequent Progress Updates",
     text: "We believe communication with parents is essential. Tutors provide detailed face-to-face feedback after each session to keep you fully informed about your child's development. We will collaborate with you to set goals, share successes, and ensure your child receives the best possible guidance on their educational journey.",
   },
