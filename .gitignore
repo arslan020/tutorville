@@ -5,3 +5,5 @@ out
 *.log
 _pdf_extract.txt
 tsconfig.tsbuildinfo
+.env
+.env*.local

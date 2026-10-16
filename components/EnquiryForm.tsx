@@ -11,36 +11,70 @@ type EnquiryFormProps = {
 };
 
 export default function EnquiryForm({ intent }: EnquiryFormProps) {
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (status === "sending") return;
+
     const form = e.currentTarget;
     const data = new FormData(form);
-    if (data.get("honey")) return;
-
-    const lines = [
-      `Name: ${data.get("name") || ""}`,
-      `Email: ${data.get("email") || ""}`,
-      `Phone: ${data.get("phone") || ""}`,
-    ];
-
-    if (intent === "book") {
-      lines.push(
-        `Year group: ${data.get("year") || ""}`,
-        `Subject: ${data.get("subject") || ""}`,
-        `Format: ${data.get("format") || ""}`,
-        `Preferred date: ${data.get("date") || ""}`,
-        `Preferred time: ${data.get("time") || ""}`
-      );
+    if (data.get("honey")) {
+      setStatus("sent");
+      return;
     }
 
-    lines.push("", String(data.get("message") || ""));
+    setStatus("sending");
+    setError("");
 
-    const subject = intent === "book" ? "Free lesson enquiry — TutorVille" : "Website enquiry — TutorVille";
-    const href = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
-    window.location.href = href;
-    setStatus("sent");
+    const payload: Record<string, string> = {
+      intent,
+      name: String(data.get("name") || ""),
+      email: String(data.get("email") || ""),
+      phone: String(data.get("phone") || ""),
+      message: String(data.get("message") || ""),
+      honey: String(data.get("honey") || ""),
+    };
+
+    if (intent === "book") {
+      payload.year = String(data.get("year") || "");
+      payload.subject = String(data.get("subject") || "");
+      payload.format = String(data.get("format") || "");
+      payload.date = String(data.get("date") || "");
+      payload.time = String(data.get("time") || "");
+    }
+
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = (await response.json().catch(() => ({}))) as { error?: string };
+
+      if (!response.ok) {
+        setError(result.error || "Could not send the message. Please try again.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("sent");
+    } catch {
+      setError("Could not send the message. Please try again.");
+      setStatus("error");
+    }
+  }
+
+  if (status === "sent") {
+    return (
+      <div className="rounded-3xl border border-line bg-white p-6 shadow-sm sm:p-8">
+        <p className="text-lg font-extrabold tracking-tight text-deep-navy">Thank you</p>
+        <p className="mt-2 text-sm leading-relaxed text-ink/75">
+          TutorVille has received your message and will be in touch shortly.
+        </p>
+      </div>
+    );
   }
 
   return (
@@ -110,9 +144,14 @@ export default function EnquiryForm({ intent }: EnquiryFormProps) {
 
       <button
         type="submit"
-        className="mt-6 w-full rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-[#8E3D6A]"
+        disabled={status === "sending"}
+        className="mt-6 w-full rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-[#8E3D6A] disabled:cursor-wait disabled:opacity-70"
       >
-        {intent === "book" ? "Request your free lesson" : "Send message"}
+        {status === "sending"
+          ? "Sending…"
+          : intent === "book"
+            ? "Request your free lesson"
+            : "Send message"}
       </button>
       <p className="mt-3 text-xs leading-relaxed text-ink/60 sm:whitespace-nowrap">
         For any other queries please email{" "}
@@ -120,8 +159,14 @@ export default function EnquiryForm({ intent }: EnquiryFormProps) {
           {SITE.email}
         </a>
       </p>
-      {status === "sent" && (
-        <p className="mt-3 text-sm text-navy">If your email app opened, send the message to finish the enquiry.</p>
+      {status === "error" && (
+        <p className="mt-3 text-sm text-accent">
+          {error} You can also email{" "}
+          <a href={`mailto:${SITE.email}`} className="font-semibold underline underline-offset-2">
+            {SITE.email}
+          </a>
+          .
+        </p>
       )}
     </form>
   );
