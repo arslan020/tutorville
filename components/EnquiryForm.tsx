@@ -1,16 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { SITE, SUBJECTS, YEAR_GROUPS } from "@/lib/content";
+import type { SiteInfo } from "@/lib/content";
 
 const fieldClass =
   "mt-1 w-full rounded-xl border border-line bg-white px-3 py-2.5 text-sm text-ink outline-none transition focus:border-navy focus:ring-2 focus:ring-sky";
 
 type EnquiryFormProps = {
   intent: "book" | "contact";
+  site: SiteInfo;
+  subjects: string[];
+  yearGroups: string[];
+  enquiryNote: string;
 };
 
-export default function EnquiryForm({ intent }: EnquiryFormProps) {
+export default function EnquiryForm({ intent, site, subjects, yearGroups, enquiryNote }: EnquiryFormProps) {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -95,7 +99,7 @@ export default function EnquiryForm({ intent }: EnquiryFormProps) {
                 <option value="" disabled>
                   Select a level
                 </option>
-                {YEAR_GROUPS.map((year) => (
+                {yearGroups.map((year) => (
                   <option key={year} value={year}>
                     {year}
                   </option>
@@ -110,7 +114,7 @@ export default function EnquiryForm({ intent }: EnquiryFormProps) {
                 <option value="" disabled>
                   Select a subject
                 </option>
-                {SUBJECTS.map((subject) => (
+                {subjects.map((subject) => (
                   <option key={subject} value={subject}>
                     {subject}
                   </option>
@@ -154,16 +158,16 @@ export default function EnquiryForm({ intent }: EnquiryFormProps) {
             : "Send message"}
       </button>
       <p className="mt-3 text-xs leading-relaxed text-ink/60 sm:whitespace-nowrap">
-        For any other queries please email{" "}
-        <a href={`mailto:${SITE.email}`} className="font-semibold text-navy underline underline-offset-2">
-          {SITE.email}
+        {enquiryNote}{" "}
+        <a href={`mailto:${site.email}`} className="font-semibold text-navy underline underline-offset-2">
+          {site.email}
         </a>
       </p>
       {status === "error" && (
         <p className="mt-3 text-sm text-accent">
           {error} You can also email{" "}
-          <a href={`mailto:${SITE.email}`} className="font-semibold underline underline-offset-2">
-            {SITE.email}
+          <a href={`mailto:${site.email}`} className="font-semibold underline underline-offset-2">
+            {site.email}
           </a>
           .
         </p>

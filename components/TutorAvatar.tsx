@@ -1,3 +1,5 @@
+import { mediaSrc } from "@/lib/blob";
+
 type TutorAvatarProps = {
   name: string;
   /** Square, already-cropped headshot */
@@ -14,7 +16,7 @@ export default function TutorAvatar({ name, photo, sizeClass, textClass, colorCl
   if (photo) {
     return (
       <div className={`${sizeClass} flex-shrink-0 overflow-hidden rounded-2xl bg-sky ring-1 ring-line`}>
-        <img src={photo} alt={name} loading="lazy" className="h-full w-full object-cover" />
+        <img src={mediaSrc(photo)} alt={name} loading="lazy" className="h-full w-full object-cover" />
       </div>
     );
   }

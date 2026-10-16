@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { SITE } from "@/lib/content";
+import { getContent } from "@/lib/store";
 import { buildEnquiryEmail } from "@/lib/enquiry-email";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -73,14 +73,15 @@ export async function POST(request: Request) {
 
   rows.push(["Message", message || "—"]);
 
-  const { html, text } = buildEnquiryEmail({ heading, rows, replyName: name });
+  const { site } = await getContent();
+  const { html, text } = buildEnquiryEmail({ heading, rows, replyName: name, site });
   const logo = await readFile(path.join(process.cwd(), "public", "email-logo.png"));
 
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: "TutorVille <onboarding@resend.dev>",
-      to: SITE.email.toLowerCase(),
+      to: site.email.toLowerCase(),
       replyTo: email,
       subject: `${heading} — ${name}`,
       html,

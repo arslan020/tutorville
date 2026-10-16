@@ -4,9 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/Logo";
-import { NAV, SITE } from "@/lib/content";
+import type { NavLink, SiteInfo } from "@/lib/content";
 
-export default function Header() {
+export default function Header({ site, nav }: { site: SiteInfo; nav: NavLink[] }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -22,7 +22,7 @@ export default function Header() {
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">
-            {NAV.map((link) => (
+            {nav.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -37,7 +37,7 @@ export default function Header() {
 
           <div className="hidden items-center gap-2 lg:flex">
             <a
-              href={`tel:${SITE.phoneTel}`}
+              href={`tel:${site.phoneTel}`}
               className="inline-flex items-center gap-2 rounded-full bg-navy px-4 py-2.5 text-sm font-bold text-white transition hover:bg-deep-navy"
             >
               <PhoneIcon />
@@ -92,7 +92,7 @@ export default function Header() {
           </button>
         </div>
         <div className="flex flex-col gap-1 px-4 py-4">
-          {NAV.map((link) => (
+          {nav.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -105,7 +105,7 @@ export default function Header() {
             </Link>
           ))}
           <a
-            href={`tel:${SITE.phoneTel}`}
+            href={`tel:${site.phoneTel}`}
             onClick={() => setOpen(false)}
             className="mx-1 mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-navy px-4 py-3 text-sm font-bold text-white"
           >

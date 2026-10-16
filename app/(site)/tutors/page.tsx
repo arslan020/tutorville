@@ -3,31 +3,31 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import TutorAvatar from "@/components/TutorAvatar";
-import { TUTORS } from "@/lib/content";
+import { getContent } from "@/lib/store";
 
 export const metadata: Metadata = { title: "Tutors" };
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const AVATARS = ["bg-navy", "bg-[#7E6BB5]", "bg-accent"];
 
-export default function TutorsPage() {
+export default async function TutorsPage() {
+  const { tutors, tutorsPage } = await getContent();
+
   return (
     <main>
-      <PageHero
-        eyebrow="Tutors"
-        title="Experienced tutors, matched to your child"
-        lead="Meet a few of the team. Specialists cover a wide range of ages, subjects and learning needs. Enquire and we will match your child with the right tutor."
-      />
+      <PageHero eyebrow={tutorsPage.eyebrow} title={tutorsPage.title} lead={tutorsPage.lead} />
       <section className="bg-white">
         <div className="mx-auto grid max-w-6xl gap-4 px-5 py-14 sm:px-6">
-          {TUTORS.map((tutor, i) => (
-            <Reveal key={tutor.name} delayMs={i * 50}>
+          {tutors.map((tutor, i) => (
+            <Reveal key={`${tutor.name}-${i}`} delayMs={i * 50}>
               <article className="grid gap-5 rounded-3xl border border-line bg-mist p-6 sm:p-8 md:grid-cols-[auto_1fr] md:items-start">
                 <TutorAvatar
                   name={tutor.name}
                   photo={tutor.photo}
                   sizeClass="h-20 w-20 sm:h-24 sm:w-24"
                   textClass="text-2xl"
-                  colorClass={AVATARS[i]}
+                  colorClass={AVATARS[i % AVATARS.length]}
                 />
                 <div>
                   <h2 className="text-2xl font-extrabold tracking-tight text-deep-navy">{tutor.name}</h2>
@@ -49,7 +49,7 @@ export default function TutorsPage() {
               href="/book"
               className="inline-flex rounded-full bg-accent px-6 py-3 text-sm font-bold text-white transition hover:bg-[#8E3D6A]"
             >
-              Enquire and get matched
+              {tutorsPage.cta}
             </Link>
           </Reveal>
         </div>

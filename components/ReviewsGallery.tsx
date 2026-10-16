@@ -1,31 +1,41 @@
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import VideoCard from "@/components/VideoCard";
-import { VIDEO_REVIEWS, WRITTEN_REVIEWS } from "@/lib/content";
+import type { WrittenReview } from "@/lib/content";
 
-export default function ReviewsGallery() {
+export default function ReviewsGallery({
+  writtenReviews,
+  videoReviews,
+  videoEyebrow,
+  videoTitle,
+  videoText,
+  writtenEyebrow,
+  writtenTitle,
+  writtenText,
+}: {
+  writtenReviews: WrittenReview[];
+  videoReviews: string[];
+  videoEyebrow: string;
+  videoTitle: string;
+  videoText: string;
+  writtenEyebrow: string;
+  writtenTitle: string;
+  writtenText: string;
+}) {
   return (
     <div className="space-y-20">
       <section id="video-reviews" className="scroll-mt-28">
-        <SectionHeading
-          eyebrow="Video reviews"
-          title="Parents in their own words"
-          text="Short clips from parents and students about their experience with TutorVille."
-        />
+        <SectionHeading eyebrow={videoEyebrow} title={videoTitle} text={videoText} />
         <div className="mt-8 grid grid-cols-2 items-start gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {VIDEO_REVIEWS.map((src, i) => (
+          {videoReviews.map((src, i) => (
             <VideoCard key={src} src={src} label={`Video review ${i + 1}`} />
           ))}
         </div>
       </section>
 
       <section id="written-reviews" className="scroll-mt-28">
-        <SectionHeading
-          eyebrow="Written reviews"
-          title="Messages from parents"
-          text="Feedback shared by TutorVille parents about their children's lessons."
-        />
+        <SectionHeading eyebrow={writtenEyebrow} title={writtenTitle} text={writtenText} />
         <div className="mt-8">
-          <ReviewsCarousel reviews={WRITTEN_REVIEWS} />
+          <ReviewsCarousel reviews={writtenReviews} />
         </div>
       </section>
     </div>

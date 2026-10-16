@@ -7,3 +7,6 @@ _pdf_extract.txt
 tsconfig.tsbuildinfo
 .env
 .env*.local
+data/site-content.json
+public/uploads/*
+!public/uploads/.gitkeep
