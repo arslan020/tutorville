@@ -2,6 +2,7 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import TutorAvatar from "@/components/TutorAvatar";
+import TutorPhotoPopup from "@/components/TutorPhotoPopup";
 import { getContent } from "@/lib/store";
 
 const AVATARS = ["bg-navy", "bg-[#7E6BB5]", "bg-accent"];
@@ -176,31 +177,33 @@ export default async function HomePage() {
           </div>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {tutors.map((tutor, i) => (
-              <Reveal key={tutor.name} delayMs={i * 70}>
-                <article className="flex h-full flex-col rounded-3xl bg-white p-6 shadow-sm ring-1 ring-line">
-                  <div className="flex items-center gap-3 lg:min-h-[3.75rem]">
-                    <TutorAvatar
-                      name={tutor.name}
-                      photo={tutor.photo}
-                      sizeClass="h-12 w-12"
-                      textClass="text-lg"
-                      colorClass={AVATARS[i]}
-                    />
-                    <div>
-                      <h3 className="text-lg font-bold text-deep-navy">{tutor.name}</h3>
-                      <p className="text-xs font-semibold text-navy">{tutor.highlights[0]}</p>
+              <Reveal key={tutor.name} delayMs={i * 70} className="h-full">
+                <TutorPhotoPopup name={tutor.name} photo={tutor.photo}>
+                  <article className="flex h-full flex-col rounded-3xl bg-white p-6 shadow-sm ring-1 ring-line">
+                    <div className="flex items-center gap-3 lg:min-h-[3.75rem]">
+                      <TutorAvatar
+                        name={tutor.name}
+                        photo={tutor.photo}
+                        sizeClass="h-12 w-12"
+                        textClass="text-lg"
+                        colorClass={AVATARS[i]}
+                      />
+                      <div>
+                        <h3 className="text-lg font-bold text-deep-navy">{tutor.name}</h3>
+                        <p className="text-xs font-semibold text-navy">{tutor.highlights[0]}</p>
+                      </div>
                     </div>
-                  </div>
-                  <p className="mt-4 text-sm leading-relaxed text-ink/75 lg:min-h-[3rem]">{tutor.role}</p>
-                  <ul className="mt-4 space-y-2.5 border-t border-line pt-4 text-sm leading-relaxed text-ink/80">
-                    {tutor.highlights.slice(1, 4).map((item) => (
-                      <li key={item} className="flex gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
+                    <p className="mt-4 text-sm leading-relaxed text-ink/75 lg:min-h-[3rem]">{tutor.role}</p>
+                    <ul className="mt-4 space-y-2.5 border-t border-line pt-4 text-sm leading-relaxed text-ink/80">
+                      {tutor.highlights.slice(1, 4).map((item) => (
+                        <li key={item} className="flex gap-2">
+                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                </TutorPhotoPopup>
               </Reveal>
             ))}
           </div>
