@@ -22,7 +22,7 @@ export default async function TutorsPage() {
         <div className="mx-auto grid max-w-6xl gap-4 px-5 py-14 sm:px-6">
           {tutors.map((tutor, i) => (
             <Reveal key={`${tutor.name}-${i}`} delayMs={i * 50}>
-              <TutorPhotoPopup name={tutor.name} photo={tutor.photo}>
+              <TutorPhotoPopup name={tutor.name} photo={tutor.photo} role={tutor.role} highlights={tutor.highlights}>
                 <article className="grid gap-5 rounded-3xl border border-line bg-mist p-6 sm:p-8 md:grid-cols-[auto_1fr] md:items-start">
                   <TutorAvatar
                     name={tutor.name}
